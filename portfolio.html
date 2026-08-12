@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dacke Shadow | Portfolio</title>
+  <link rel="stylesheet" href="css/style.css?v=12">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="portfolio-page">
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <span class="logo-icon">DS</span>
+      Dacke Shadow
+      <span class="status-badge">Étudiant</span>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#bio">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="#" class="btn-outline"><i class="fab fa-discord"></i> Discord</a>
+      <a href="#projects" class="btn-white">View Work</a>
+    </div>
+
+    <button class="menu-toggle" aria-label="Menu">
+      <i class="fas fa-bars"></i>
+    </button>
+  </nav>
+
+  <!-- BIO -->
+  <section id="bio" class="section">
+    <div class="section-header">
+      <h2 class="section-title">About Me</h2>
+      <p class="section-subtitle">Who’s behind the code</p>
+    </div>
+
+    <div class="bio-grid">
+      <div class="bio-image">
+        <img src="asset/image.jpeg" alt="Dacke Shadow">
+      </div>
+      <div id="bio-content">
+        <!-- Injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section id="stats" class="section">
+    <div class="section-header">
+      <h2 class="section-title">My Earnings</h2>
+      <p class="section-subtitle">A snapshot of sales, revenue, and businesses I’ve brought to life.</p>
+    </div>
+    <div id="stats-grid" class="stats-grid">
+      <!-- Injected by JS -->
+    </div>
+  </section>
+
+  <!-- TECH BAR -->
+  <div class="tech-bar">
+    <div class="tech-bar-inner">
+      <span class="tech-bar-label">Experienced with</span>
+      <div class="tech-icons">
+        <i class="fab fa-html5" title="HTML5"></i>
+        <i class="fab fa-css3-alt" title="CSS3"></i>
+        <i class="fab fa-js" title="JavaScript"></i>
+        <i class="fab fa-react" title="React"></i>
+        <i class="fab fa-node-js" title="Node.js"></i>
+        <i class="fab fa-python" title="Python"></i>
+        <i class="fab fa-php" title="PHP"></i>
+        <i class="fab fa-figma" title="Figma"></i>
+      </div>
+      <span class="tech-bar-label">Proficient in these languages</span>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Skills</h2>
+      <p class="section-subtitle">Technologies & expertise</p>
+    </div>
+    <div id="skills-grid" class="skills-grid">
+      <!-- Injected by JS -->
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Projects</h2>
+      <p class="section-subtitle">Selected work</p>
+    </div>
+    <div id="projects-grid" class="projects-grid">
+      <!-- Injected by JS -->
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Contact</h2>
+      <p class="section-subtitle">Let’s talk about your next project</p>
+    </div>
+
+    <div class="contact-grid">
+      <div id="contact-info">
+        <!-- Injected by JS -->
+      </div>
+
+      <form class="contact-form">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required placeholder="you@email.com">
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required placeholder="Tell me about your project..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2026 <span>Dacke Shadow</span> — All rights reserved</p>
+  </footer>
+
+  <script src="js/data.js?v=12"></script>
+  <script src="js/app.js?v=12"></script>
+</body>
+</html>

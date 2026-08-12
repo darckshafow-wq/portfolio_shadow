@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dacke Shadow | Portfolio</title>
+  <link rel="stylesheet" href="css/style.css?v=3">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="landing-page">
+
+  <!-- Background -->
+  <div class="landing-bg"></div>
+  <div class="landing-overlay"></div>
+
+  <!-- Icônes flottantes -->
+  <div class="floating-icons">
+    <i class="fab fa-html5"></i>
+    <i class="fab fa-css3-alt"></i>
+    <i class="fab fa-js"></i>
+    <i class="fab fa-react"></i>
+    <i class="fab fa-node-js"></i>
+    <i class="fab fa-python"></i>
+    <i class="fab fa-php"></i>
+    <i class="fab fa-figma"></i>
+  </div>
+
+  <!-- Hero (pas de header) -->
+  <main class="hero">
+    <div class="hero-content">
+      <p class="hero-greeting anim-1">Hey 👋, I'm <span>Dacke Shadow</span></p>
+      
+      <h1 class="hero-title anim-2">
+        Fullstack Web <span>Developer</span>
+      </h1>
+
+      <p class="hero-desc anim-3">
+        Developer. Entrepreneur. I’ve been doing this long enough to know what matters.
+      </p>
+
+      <div class="hero-buttons anim-4">
+        <a href="portfolio.html#contact" class="btn-white">Get in Touch</a>
+        <a href="portfolio.html" class="btn-outline">View My Work</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+  document.querySelectorAll('a[href="portfolio.html"], a[href="portfolio.html#contact"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const href = this.getAttribute('href');
+      
+      document.body.style.transition = 'opacity 0.5s ease';
+      document.body.style.opacity = '0';
+      
+      setTimeout(() => {
+        window.location.href = href;
+      }, 480);
+    });
+  });
+</script>
+
+</body>
+</html>

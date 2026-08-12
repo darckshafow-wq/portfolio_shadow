@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dacke Shadow | Portfolio</title>
-  <link rel="stylesheet" href="css/style.css?v=3">
+  <!-- Chemin CSS corrigé (suppression du ../) -->
+  <link rel="stylesheet" href="css/style.css?v=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body class="landing-page">
@@ -25,7 +26,7 @@
     <i class="fab fa-figma"></i>
   </div>
 
-  <!-- Hero (pas de header) -->
+  <!-- Hero -->
   <main class="hero">
     <div class="hero-content">
       <p class="hero-greeting anim-1">Hey 👋, I'm <span>Dacke Shadow</span></p>
@@ -46,20 +47,20 @@
   </main>
 
   <script>
-  document.querySelectorAll('a[href="portfolio.html"], a[href="portfolio.html#contact"]').forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      const href = this.getAttribute('href');
-      
-      document.body.style.transition = 'opacity 0.5s ease';
-      document.body.style.opacity = '0';
-      
-      setTimeout(() => {
-        window.location.href = href;
-      }, 480);
+    document.querySelectorAll('a[href^="portfolio.html"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const href = this.getAttribute('href');
+        
+        document.body.style.transition = 'opacity 0.4s ease';
+        document.body.style.opacity = '0';
+        
+        setTimeout(() => {
+          window.location.href = href;
+        }, 400);
+      });
     });
-  });
-</script>
+  </script>
 
 </body>
 </html>

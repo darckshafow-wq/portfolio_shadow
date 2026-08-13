@@ -4,15 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dacke Shadow | Portfolio</title>
-  <!-- Chemin CSS corrigé (suppression du ../) -->
-  <link rel="stylesheet" href="css/style.css?v=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="landing-page">
-
-  <!-- Background -->
-  <div class="landing-bg"></div>
-  <div class="landing-overlay"></div>
 
   <!-- Icônes flottantes -->
   <div class="floating-icons">
@@ -22,45 +20,27 @@
     <i class="fab fa-react"></i>
     <i class="fab fa-node-js"></i>
     <i class="fab fa-python"></i>
-    <i class="fab fa-php"></i>
-    <i class="fab fa-figma"></i>
   </div>
 
   <!-- Hero -->
   <main class="hero">
     <div class="hero-content">
-      <p class="hero-greeting anim-1">Hey 👋, I'm <span>Dacke Shadow</span></p>
+      <p class="hero-greeting">Hey 👋, I'm <span>Dacke Shadow</span></p>
       
-      <h1 class="hero-title anim-2">
+      <h1 class="hero-title">
         Fullstack Web <span>Developer</span>
       </h1>
 
-      <p class="hero-desc anim-3">
+      <p class="hero-desc">
         Developer. Entrepreneur. I’ve been doing this long enough to know what matters.
       </p>
 
-      <div class="hero-buttons anim-4">
-        <a href="portfolio.html#contact" class="btn-white">Get in Touch</a>
-        <a href="portfolio.html" class="btn-outline">View My Work</a>
+      <div class="hero-buttons">
+        <a href="portfolio.html" class="btn-white">voir mon travail</a>
+        <a href="portfolio.html#contact" class="btn-outline">me contacter</a>
       </div>
     </div>
   </main>
-
-  <script>
-    document.querySelectorAll('a[href^="portfolio.html"]').forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const href = this.getAttribute('href');
-        
-        document.body.style.transition = 'opacity 0.4s ease';
-        document.body.style.opacity = '0';
-        
-        setTimeout(() => {
-          window.location.href = href;
-        }, 400);
-      });
-    });
-  </script>
 
 </body>
 </html>

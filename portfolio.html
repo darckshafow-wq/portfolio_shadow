@@ -3,15 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio de Dark Shadow - Étudiant en Informatique et Développement d'Applications. Projets Full-Stack, Mobile et Logiciel.">
   <title>Dark Shadow | Portfolio</title>
+  
+  <!-- Feuilles de Styles -->
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/portfolio.css">
+  
+  <!-- Icons FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body class="portfolio-page">
 
   <!-- NAVBAR -->
-  <nav class="navbar">
+  <nav class="navbar" id="navbar">
     <a href="index.html" class="logo">
       <span class="logo-icon">DS</span>
       <span class="logo-text">Dark Shadow</span>
@@ -20,25 +25,27 @@
       </span>
     </a>
 
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#bio">About</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
 
     <div class="nav-actions">
-      <a href="#" class="btn-outline"><i class="fab fa-discord"></i> Discord</a>
-      <a href="#projects" class="btn-white">View Work</a>
+      <a href="https://discord.com" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding: 8px 16px; font-size: 0.85rem;">
+        <i class="fab fa-discord"></i> Discord
+      </a>
+      <a href="#projects" class="btn-primary" style="padding: 8px 16px; font-size: 0.85rem;">View Work</a>
     </div>
 
-    <button class="menu-toggle" aria-label="Menu">
+    <button class="menu-toggle" id="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
       <i class="fas fa-bars"></i>
     </button>
   </nav>
 
-  <!-- BIO -->
-  <section id="bio" class="section">
+  <!-- BIO SECTION -->
+  <section id="bio" class="section reveal">
     <div class="section-header">
       <h2 class="section-title">About Me</h2>
       <p class="section-subtitle">Who’s behind the code</p>
@@ -47,7 +54,7 @@
     <div class="bio-grid">
       <div class="bio-image-wrapper">
         <div class="bio-image">
-          <img src="asset/image.jpeg" alt="Dark Shadow">
+          <img src="asset/image.jpeg" alt="Dark Shadow - Développeur d'Applications">
           <div class="bio-image-overlay"></div>
         </div>
         <div class="bio-experience-badge">
@@ -57,8 +64,8 @@
       </div>
 
       <div class="bio-content-wrapper">
-        <div id="bio-content">
-          <!-- Injecté par JS / Exemple de structure enrichie -->
+        <div id="bio-content" class="bio-content">
+          <!-- Injecté dynamiquement par injectBio() dans app.js -->
         </div>
         
         <div class="bio-highlights">
@@ -66,14 +73,14 @@
             <i class="fas fa-code"></i>
             <div>
               <h4>Architecture Moderne</h4>
-              <p>Conception d'applications performantes et maintenables.</p>
+              <p>Conception d'applications performantes, modulaires et maintenables.</p>
             </div>
           </div>
           <div class="highlight-item">
             <i class="fas fa-layer-group"></i>
             <div>
               <h4>Full-Stack & Mobile</h4>
-              <p>Maîtrise de l'écosystème web et développement multiplateforme.</p>
+              <p>Maîtrise du web réactif et du développement multiplateforme.</p>
             </div>
           </div>
         </div>
@@ -81,19 +88,19 @@
     </div>
   </section>
 
-  <!-- STATS -->
-  <section id="stats" class="section">
+  <!-- STATS SECTION -->
+  <section id="stats" class="section reveal">
     <div class="section-header">
-      <h2 class="section-title">My Earnings</h2>
-      <p class="section-subtitle">A snapshot of sales, revenue, and businesses I’ve brought to life.</p>
+      <h2 class="section-title">Key Numbers</h2>
+      <p class="section-subtitle">A snapshot of metrics and active engineering projects.</p>
     </div>
     <div id="stats-grid" class="stats-grid">
-      <!-- Injected by JS -->
+      <!-- Injecté dynamiquement par injectStats() dans app.js -->
     </div>
   </section>
 
-  <!-- TECH BAR -->
-  <div class="tech-bar">
+  <!-- TECH BAR SECTION -->
+  <div class="tech-bar reveal">
     <div class="tech-bar-inner">
       <span class="tech-bar-label">Experienced with</span>
       <div class="tech-icons">
@@ -106,45 +113,45 @@
         <i class="fab fa-php" title="PHP"></i>
         <i class="fab fa-figma" title="Figma"></i>
       </div>
-      <span class="tech-bar-label">Proficient in these languages</span>
+      <span class="tech-bar-label">Proficient in modern stacks</span>
     </div>
   </div>
 
-  <!-- SKILLS -->
-  <section id="skills" class="section">
+  <!-- SKILLS SECTION -->
+  <section id="skills" class="section reveal">
     <div class="section-header">
       <h2 class="section-title">Skills</h2>
       <p class="section-subtitle">Technologies & expertise</p>
     </div>
     <div id="skills-grid" class="skills-grid">
-      <!-- Injected by JS -->
+      <!-- Injecté dynamiquement par injectSkills() dans app.js -->
     </div>
   </section>
 
-  <!-- PROJECTS -->
-  <section id="projects" class="section">
+  <!-- PROJECTS SECTION -->
+  <section id="projects" class="section reveal">
     <div class="section-header">
       <h2 class="section-title">Projects</h2>
-      <p class="section-subtitle">Selected work</p>
+      <p class="section-subtitle">Selected work & active developments</p>
     </div>
     <div id="projects-grid" class="projects-grid">
-      <!-- Injected by JS -->
+      <!-- Injecté dynamiquement par initProjectsAndModal() dans app.js -->
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="section">
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="section reveal">
     <div class="section-header">
       <h2 class="section-title">Contact</h2>
       <p class="section-subtitle">Let’s talk about your next project</p>
     </div>
 
     <div class="contact-grid">
-      <div id="contact-info">
-        <!-- Injected by JS -->
+      <div id="contact-info" class="contact-info">
+        <!-- Injecté dynamiquement par injectContact() dans app.js -->
       </div>
 
-      <form class="contact-form">
+      <form class="contact-form" id="contact-form">
         <div class="form-group">
           <label for="name">Name</label>
           <input type="text" id="name" name="name" required placeholder="Your name">
@@ -162,12 +169,26 @@
     </div>
   </section>
 
+  <!-- POPUP MODALE PROJET -->
+  <div id="project-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-overlay" id="modal-overlay"></div>
+    <div class="modal-container">
+      <button id="modal-close-btn" class="modal-close-btn" aria-label="Fermer la modale">
+        <i class="fas fa-times"></i>
+      </button>
+      
+      <!-- Container dynamique injecté par JS -->
+      <div id="modal-dynamic-content" class="project-detail-wrapper"></div>
+    </div>
+  </div>
+
   <!-- FOOTER -->
   <footer class="footer">
     <p>© 2026 <span>Dark Shadow</span> — All rights reserved</p>
   </footer>
 
-  <script src="js/data.js?v=12"></script>
-  <script src="js/app.js?v=12"></script>
+  <!-- SCRIPTS JS -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>

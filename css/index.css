@@ -2,40 +2,58 @@
    DARK SHADOW - LANDING PAGE STYLES (css/index.css)
    ============================================================ */
 
+/* --- Variables Globales --- */
+:root {
+  --bg-dark: #070709;
+  --accent-blue: #3b82f6;
+  --accent-blue-bright: #60a5fa;
+  --accent-glow: rgba(59, 130, 246, 0.35);
+  --text-main: #ffffff;
+  --text-muted: #a1a1aa;
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
 .landing-page {
   position: relative;
   min-height: 100vh;
   width: 100%;
   overflow: hidden;
-  background: var(--bg, #0a0a0a);
+  background: var(--bg-dark);
   display: flex;
   align-items: center;
   justify-content: center;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* --- Arrière-plan (Chemin d'accès corrigé vers asset/font.jpg) --- */
+/* --- Arrière-plan & Profondeur Visuelle --- */
 .landing-bg {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(rgba(5, 5, 5, 0.75), rgba(5, 5, 5, 0.85)),
+  background-image: linear-gradient(180deg, rgba(7, 7, 9, 0.72) 0%, rgba(7, 7, 9, 0.94) 100%),
                     url('../asset/font.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   z-index: 0;
+  will-change: transform, filter;
+  transition: transform 0.75s var(--ease-smooth), filter 0.75s var(--ease-smooth);
 }
 
 .landing-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(5, 5, 5, 0.4);
+  /* Halo lumineux central pour maximiser la clarté et la lisibilité du texte */
+  background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.14) 0%, rgba(7, 7, 9, 0.65) 75%);
   z-index: 1;
+  pointer-events: none;
 }
 
-/* --- Icônes Flottantes --- */
+/* --- Icônes Flottantes (Fluidité & Légèreté) --- */
 .floating-icons {
   position: absolute;
   inset: 0;
@@ -47,31 +65,36 @@
 .floating-icons i {
   position: absolute;
   color: rgba(59, 130, 246, 0.22);
-  filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.2));
-  animation: floatAnim 10s ease-in-out infinite;
+  filter: drop-shadow(0 0 12px var(--accent-glow));
+  will-change: transform, opacity;
+  animation: floatAnim 10s ease-in-out infinite alternate;
 }
 
+/* Positionnement et variations d'animations */
 .floating-icons i:nth-child(1) { top: 12%; left: 8%;  font-size: 2.8rem; animation-delay: 0s; }
-.floating-icons i:nth-child(2) { top: 20%; left: 82%; font-size: 2.2rem; animation-delay: 1.5s; }
+.floating-icons i:nth-child(2) { top: 18%; left: 82%; font-size: 2.2rem; animation-delay: 1.5s; animation-duration: 12s; }
 .floating-icons i:nth-child(3) { top: 58%; left: 10%; font-size: 2.5rem; animation-delay: 3s; }
-.floating-icons i:nth-child(4) { top: 75%; left: 85%; font-size: 2rem;   animation-delay: 0.8s; }
-.floating-icons i:nth-child(5) { top: 35%; left: 90%; font-size: 2.6rem; animation-delay: 2.2s; }
-.floating-icons i:nth-child(6) { top: 82%; left: 45%; font-size: 2.1rem; animation-delay: 3.8s; }
+.floating-icons i:nth-child(4) { top: 75%; left: 85%; font-size: 2rem;   animation-delay: 0.8s; animation-duration: 11s; }
+.floating-icons i:nth-child(5) { top: 32%; left: 88%; font-size: 2.6rem; animation-delay: 2.2s; }
+.floating-icons i:nth-child(6) { top: 82%; left: 45%; font-size: 2.1rem; animation-delay: 3.8s; animation-duration: 13s; }
 .floating-icons i:nth-child(7) { top: 15%; left: 48%; font-size: 1.8rem; animation-delay: 1.2s; }
 .floating-icons i:nth-child(8) { top: 68%; left: 5%;  font-size: 2.3rem; animation-delay: 3.4s; }
 
 @keyframes floatAnim {
-  0%, 100% {
-    transform: translateY(0) rotate(0deg);
-    opacity: 0.22;
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: 0.2;
   }
   50% {
-    transform: translateY(-25px) rotate(8deg);
     opacity: 0.45;
+  }
+  100% {
+    transform: translateY(-26px) rotate(10deg) scale(1.05);
+    opacity: 0.25;
   }
 }
 
-/* --- Hero Section --- */
+/* --- Hero Section & Layout --- */
 .hero {
   position: relative;
   z-index: 2;
@@ -88,22 +111,44 @@
   max-width: 780px;
   width: 100%;
   margin: 0 auto;
+  position: relative;
+  will-change: transform, opacity, filter;
+  transition: transform 0.6s var(--ease-smooth), opacity 0.5s ease, filter 0.6s ease;
 }
 
+/* Halo doux placé directement derrière le texte principal */
+.hero-content::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  height: 350px;
+  background: var(--accent-glow);
+  filter: blur(110px);
+  border-radius: 50%;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* --- Greeting & Typewriter Text --- */
 .hero-greeting {
   font-size: 1.25rem;
-  color: var(--text-muted, #a1a1aa);
+  color: var(--text-muted);
   margin-bottom: 1.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   flex-wrap: wrap;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
 }
 
-/* --- Animation d'Écriture (Typewriter stable sans déformation) --- */
 .typing-wrapper {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   vertical-align: bottom;
 }
 
@@ -112,14 +157,14 @@
   white-space: nowrap;
   overflow: hidden;
   font-weight: 700;
-  color: #3b82f6;
-  background: linear-gradient(90deg, #ffffff, #3b82f6);
+  color: var(--accent-blue-bright);
+  background: linear-gradient(90deg, #ffffff 10%, var(--accent-blue-bright) 90%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  border-right: 3px solid #3b82f6;
+  border-right: 3px solid var(--accent-blue-bright);
   width: 0;
-  /* 11ch bloque la largeur exacte sur "Dark Shadow" (11 caractères) */
-  animation: typing 2.2s steps(11, end) forwards, blinkCursor 0.75s step-end infinite;
+  /* 11ch verrouille précisément la largeur des 11 caractères de "Dark Shadow" */
+  animation: typing 2.2s steps(11, end) 0.3s forwards, blinkCursor 0.75s step-end infinite;
 }
 
 @keyframes typing {
@@ -129,32 +174,36 @@
 
 @keyframes blinkCursor {
   from, to { border-color: transparent; }
-  50% { border-color: #3b82f6; }
+  50% { border-color: var(--accent-blue-bright); }
 }
 
-/* --- Titres & Textes --- */
+/* --- Titres & Description --- */
 .hero-title {
-  font-size: clamp(2.5rem, 6vw, 4.2rem);
+  font-size: clamp(2.6rem, 6.5vw, 4.4rem);
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.15;
   margin-bottom: 1.4rem;
-  letter-spacing: -0.5px;
-  color: #ffffff;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
 }
 
 .hero-title span {
   display: inline-block;
-  background: linear-gradient(90deg, #ffffff 20%, #3b82f6 100%);
+  background: linear-gradient(135deg, #ffffff 25%, var(--accent-blue-bright) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 10px rgba(59, 130, 246, 0.35));
 }
 
 .hero-desc {
-  color: var(--text-muted, #a1a1aa);
-  font-size: 1.12rem;
-  max-width: 620px;
-  margin: 0 auto 2.6rem;
-  line-height: 1.7;
+  color: var(--text-muted);
+  font-size: 1.15rem;
+  max-width: 640px;
+  margin: 0 auto 2.8rem;
+  line-height: 1.75;
+  font-weight: 400;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* --- Boutons d'Action --- */
@@ -168,10 +217,10 @@
 
 .btn-white {
   background: #ffffff;
-  color: #000000;
-  padding: 0.85rem 1.9rem;
+  color: #050505;
+  padding: 0.9rem 2.1rem;
   border-radius: 12px;
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   font-weight: 600;
   border: 1px solid #ffffff;
   display: inline-flex;
@@ -179,58 +228,74 @@
   gap: 10px;
   cursor: pointer;
   text-decoration: none;
-  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.08);
+  transition: transform 0.3s var(--ease-spring),
+              background-color 0.3s ease,
+              box-shadow 0.3s ease;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.12);
 }
 
 .btn-white:hover {
   background: #f4f4f5;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.25);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(255, 255, 255, 0.28);
+}
+
+.btn-white:active {
+  transform: translateY(-1px) scale(0.99);
 }
 
 .btn-white .btn-icon {
-  transition: transform 0.3s ease;
+  transition: transform 0.3s var(--ease-spring);
 }
 
 .btn-white:hover .btn-icon {
-  transform: translateX(4px);
+  transform: translateX(5px);
 }
 
 .btn-outline {
-  background: rgba(255, 255, 255, 0.03);
-  color: #ffffff;
-  padding: 0.85rem 1.9rem;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-main);
+  padding: 0.9rem 2.1rem;
   border-radius: 12px;
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   font-weight: 500;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   display: inline-flex;
   align-items: center;
   gap: 10px;
   cursor: pointer;
   text-decoration: none;
   backdrop-filter: blur(12px);
-  transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform 0.3s var(--ease-spring),
+              background-color 0.3s ease,
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
 }
 
 .btn-outline:hover {
-  border-color: rgba(59, 130, 246, 0.6);
+  border-color: rgba(59, 130, 246, 0.7);
   background: rgba(59, 130, 246, 0.12);
-  transform: translateY(-3px);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.25);
 }
 
-/* --- Animations d'entrée (Fade Up) --- */
+.btn-outline:active {
+  transform: translateY(-1px) scale(0.99);
+}
+
+/* --- Animations d'Entrée en Cascade --- */
 .anim-1, .anim-2, .anim-3, .anim-4 {
   opacity: 0;
-  transform: translateY(20px);
-  animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform: translateY(22px);
+  animation: heroFadeUp 0.85s var(--ease-smooth) forwards;
+  will-change: transform, opacity;
 }
 
 .anim-1 { animation-delay: 0.15s; }
-.anim-2 { animation-delay: 0.3s; }
+.anim-2 { animation-delay: 0.30s; }
 .anim-3 { animation-delay: 0.45s; }
-.anim-4 { animation-delay: 0.6s; }
+.anim-4 { animation-delay: 0.60s; }
 
 @keyframes heroFadeUp {
   to {
@@ -239,8 +304,37 @@
   }
 }
 
-/* Responsive Mobile */
+/* --- Transition de Sortie de Page (Exit Transition) --- */
+.page-transition-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-dark);
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.55s var(--ease-smooth);
+}
+
+body.is-exiting .page-transition-overlay {
+  opacity: 1;
+  pointer-events: all;
+}
+
+body.is-exiting .hero-content {
+  transform: scale(0.94) translateY(-18px);
+  filter: blur(6px);
+  opacity: 0;
+}
+
+body.is-exiting .landing-bg {
+  transform: scale(1.08);
+  filter: blur(10px) brightness(0.6);
+}
+
+/* Adaptation Mobile */
 @media (max-width: 560px) {
   .hero-title { font-size: 2.2rem; }
-  .typing-text { font-size: 1.1rem; }
+  .hero-desc { font-size: 1rem; margin-bottom: 2.2rem; }
+  .hero-buttons { flex-direction: column; width: 100%; }
+  .btn-white, .btn-outline { width: 100%; justify-content: center; }
 }

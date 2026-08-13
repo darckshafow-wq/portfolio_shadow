@@ -6,6 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
     injectProjects();
     injectContact();
     animateSkillBars();
+    
+    // Initialise l'animation au scroll et le compteur de visites
+    initScrollReveal();
+    initVisitorCounter();
   }
 
   initNavbar();
@@ -97,22 +101,25 @@ function injectSkills() {
 }
 
 function animateSkillBars() {
-  const bars = document.querySelectorAll('.skill-progress');
-  if (!bars.length) return;
+  const skillsSection = document.getElementById('skills');
+  if (!skillsSection) return;
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
+      const bars = entry.target.querySelectorAll('.skill-progress');
       if (entry.isIntersecting) {
         bars.forEach(bar => {
           bar.style.width = bar.dataset.width;
         });
-        observer.disconnect();
+      } else {
+        bars.forEach(bar => {
+          bar.style.width = '0%';
+        });
       }
     });
   }, { threshold: 0.2 });
 
-  const section = document.getElementById('skills');
-  if (section) observer.observe(section);
+  observer.observe(skillsSection);
 }
 
 function injectProjects() {
@@ -176,6 +183,60 @@ function injectContact() {
   `;
 }
 
+// --- Animation au Scroll (Bidirectionnelle + Support Reload) ---
+function initScrollReveal() {
+  const revealElements = document.querySelectorAll(
+    '.section-header, .bio-grid, .stat-card, .skill-card, .project-card, .contact-grid, .tech-bar'
+  );
+
+  revealElements.forEach(el => el.classList.add('reveal'));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      } else {
+        entry.target.classList.remove('active');
+      }
+    });
+  }, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -20px 0px'
+  });
+
+  revealElements.forEach(el => observer.observe(el));
+}
+
+// --- Compteur de Visites en Ligne ---
+function initVisitorCounter() {
+  const footer = document.querySelector('.footer');
+  if (!footer) return;
+
+  const counterDiv = document.createElement('div');
+  counterDiv.className = 'visitor-counter';
+  counterDiv.innerHTML = `
+    <i class="fas fa-eye"></i> Visites : <span id="visit-count">...</span>
+  `;
+  footer.appendChild(counterDiv);
+
+  const namespace = "darkshadow-portfolio.dev"; 
+  const key = "visits";
+
+  fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
+    .then(res => res.json())
+    .then(data => {
+      const countSpan = document.getElementById('visit-count');
+      if (countSpan && data.value) {
+        countSpan.textContent = data.value.toLocaleString();
+      }
+    })
+    .catch(() => {
+      const countSpan = document.getElementById('visit-count');
+      if (countSpan) countSpan.textContent = "1";
+    });
+}
+
+// --- Gestionnaire du formulaire de contact ---
 document.addEventListener('submit', (e) => {
   if (e.target.classList.contains('contact-form')) {
     e.preventDefault();

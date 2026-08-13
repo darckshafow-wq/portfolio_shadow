@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dacke Shadow | Portfolio</title>
-  <link rel="stylesheet" href="css/style.css?v=12">
+  <title>Dark Shadow | Portfolio</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/portfolio.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body class="portfolio-page">
@@ -13,8 +14,10 @@
   <nav class="navbar">
     <a href="index.html" class="logo">
       <span class="logo-icon">DS</span>
-      Dacke Shadow
-      <span class="status-badge">Étudiant</span>
+      <span class="logo-text">Dark Shadow</span>
+      <span class="status-badge">
+        <span class="status-dot"></span> Étudiant
+      </span>
     </a>
 
     <ul class="nav-links">
@@ -42,11 +45,38 @@
     </div>
 
     <div class="bio-grid">
-      <div class="bio-image">
-        <img src="asset/image.jpeg" alt="Dacke Shadow">
+      <div class="bio-image-wrapper">
+        <div class="bio-image">
+          <img src="asset/image.jpeg" alt="Dark Shadow">
+          <div class="bio-image-overlay"></div>
+        </div>
+        <div class="bio-experience-badge">
+          <span class="badge-num">DEV</span>
+          <span class="badge-text">Application Track</span>
+        </div>
       </div>
-      <div id="bio-content">
-        <!-- Injected by JS -->
+
+      <div class="bio-content-wrapper">
+        <div id="bio-content">
+          <!-- Injecté par JS / Exemple de structure enrichie -->
+        </div>
+        
+        <div class="bio-highlights">
+          <div class="highlight-item">
+            <i class="fas fa-code"></i>
+            <div>
+              <h4>Architecture Moderne</h4>
+              <p>Conception d'applications performantes et maintenables.</p>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <i class="fas fa-layer-group"></i>
+            <div>
+              <h4>Full-Stack & Mobile</h4>
+              <p>Maîtrise de l'écosystème web et développement multiplateforme.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -134,7 +164,7 @@
 
   <!-- FOOTER -->
   <footer class="footer">
-    <p>© 2026 <span>Dacke Shadow</span> — All rights reserved</p>
+    <p>© 2026 <span>Dark Shadow</span> — All rights reserved</p>
   </footer>
 
   <script src="js/data.js?v=12"></script>
